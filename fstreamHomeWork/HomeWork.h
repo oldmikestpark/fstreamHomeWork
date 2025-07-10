@@ -115,4 +115,6 @@ public:
 	void Add() const;
 	void PrintChart() const;
 	void Save(char* fileName);
+	char loadName[256];
+	void PrintLoad(char* loadName) const;
 };

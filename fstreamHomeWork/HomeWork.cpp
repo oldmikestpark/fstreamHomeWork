@@ -17,6 +17,10 @@ int main()
 			{
 				hw.PrintChart();
 			}
+			else 
+			{
+				hw.PrintLoad(hw.loadName);
+			}
 		}
 		else if(_getch() == 's')
 		{
@@ -28,6 +32,12 @@ int main()
 			hw.Save(fileName);
 
 			_putch('\n');
+		}
+		else if (_getch() == 'l') 
+		{
+			oldmike::print("\nEnter file name: ");
+
+			oldmike::read(hw.loadName, 256);
 		}
 	} while (!(_getch() == 'q'));
 
@@ -80,3 +90,14 @@ void HomeWork::Save(char* fileName)
 		out.put('\n');
 	}
 }
+
+void HomeWork::PrintLoad(char* loadName) const
+{
+	std::ifstream in(loadName);
+	for (char c = in.get(); in.good(); c = in.get()) 
+	{
+		_putch(c);
+	}
+}
+
+
