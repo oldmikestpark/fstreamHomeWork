@@ -7,23 +7,23 @@ int main()
 	{
 		oldmike::print("(l)oad (s)ave (a)dd (q)uit or (p)rint?\n");
 
-		if (_getch() == 'a') 
+		char mission = _getch();
+		switch (mission) 
 		{
+		case 'a':
 			hw.Add();
-		}
-		else if (_getch() == 'p') 
-		{
+			break;
+		case 'p':
 			if (hw.n != 0)
 			{
 				hw.PrintChart();
 			}
-			else 
+			else
 			{
 				hw.PrintLoad(hw.loadName);
 			}
-		}
-		else if(_getch() == 's')
-		{
+			break;
+		case 's':
 			oldmike::print("\nEnter file name: ");
 
 			char fileName[256];
@@ -32,12 +32,13 @@ int main()
 			hw.Save(fileName);
 
 			_putch('\n');
-		}
-		else if (_getch() == 'l') 
-		{
+			break;
+		case 'l':
 			oldmike::print("\nEnter file name: ");
 
 			oldmike::read(hw.loadName, 256);
+			oldmike::print("\n");
+			break;
 		}
 	} while (!(_getch() == 'q'));
 

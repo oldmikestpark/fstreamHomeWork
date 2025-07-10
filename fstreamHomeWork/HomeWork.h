@@ -5,6 +5,20 @@
 
 namespace oldmike
 {
+	void printfix(const char* s, int size) 
+	{
+		int n = 0;
+		for (; *s != 0; s++)
+		{
+			++n;
+			_putch(*s);
+		}
+		for (; n < size; ++n) 
+		{
+			_putch(' ');
+		}
+	}
+	
 	void print(const char* s)
 	{
 		for (; *s != 0; s++)
