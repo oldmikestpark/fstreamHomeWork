@@ -101,5 +101,24 @@ namespace oldmike
 
 int main() 
 {
-	
+	do
+	{
+		oldmike::print("(l)oad (s)ave (a)dd (q)uit or (p)rint?\n");
+
+		if (_getch() == 'a') 
+		{
+			oldmike::print("\nEnter name: ");
+			char name[256];
+			oldmike::read(name, 256);
+			
+			oldmike::print("\nEnter value: ");
+			char value[256];
+			oldmike::read(value, 256);
+			
+			oldmike::print("\n\n");
+		}
+	} while (!(_getch() == 'q'));
+
+	while (!_kbhit());
+	return 0;
 }
