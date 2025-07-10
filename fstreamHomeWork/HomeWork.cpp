@@ -98,3 +98,8 @@ namespace oldmike
 		strrev(pStart);
 	}
 }
+
+int main() 
+{
+	
+}
