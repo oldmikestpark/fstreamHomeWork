@@ -1,45 +1,51 @@
 #include "HomeWork.h"
+HomeWork hw;
 
 int main() 
 {
-	HomeWork hw;
-
 	do
 	{
 		oldmike::print("(l)oad (s)ave (a)dd (q)uit or (p)rint?\n");
 
-		char name[256][20];
-		char value[256][sizeof(int)];
-		
 		if (_getch() == 'a') 
 		{
-			oldmike::print("\nEnter name: ");
-			oldmike::read(name[hw.n], 256);
-			
-			oldmike::print("\nEnter value: ");
-			oldmike::read(value[hw.n], 256);
-			
-			oldmike::print("\n\n");
-			++hw.n;
+			hw.Add();
 		}
 		else if (_getch() == 'p') 
 		{
-			oldmike::print("\n     Beautiful Chart Bitches!\n");
-			oldmike::print("       ------------------------\n\n\n");
-			for (int i = 0; i < hw.n; ++i)
-			{
-				oldmike::print(name[i]);
-				oldmike::print("   |");
-				int number = oldmike::str2int(value[i]);
-				for (int i = 0; i < number; ++i)
-				{
-					_putch('=');
-				}
-				oldmike::print("\n");
-			}
+			hw.PrintChart();
 		}
 	} while (!(_getch() == 'q'));
 
 	while (!_kbhit());
 	return 0;
+}
+
+void HomeWork::Add() const
+{
+	oldmike::print("\nEnter name: ");
+	oldmike::read(hw.name[hw.n], 256);
+
+	oldmike::print("\nEnter value: ");
+	oldmike::read(hw.value[hw.n], 256);
+
+	oldmike::print("\n\n");
+	++hw.n;
+}
+
+void HomeWork::PrintChart() const
+{
+	oldmike::print("\n     Beautiful Chart Bitches!\n");
+	oldmike::print("       ------------------------\n\n\n");
+	for (int i = 0; i < hw.n; ++i)
+	{
+		oldmike::print(hw.name[i]);
+		oldmike::print("   |");
+		int number = oldmike::str2int(hw.value[i]);
+		for (int i = 0; i < number; ++i)
+		{
+			_putch('=');
+		}
+		oldmike::print("\n");
+	}
 }

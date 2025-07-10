@@ -103,7 +103,15 @@ namespace oldmike
 
 class HomeWork 
 {
+private:
+	static constexpr int height = 256;
+	static constexpr int nameWidth = 20;
+	static constexpr int valueWidth = sizeof(int);
+
 public:
 	int n = 0;
-private:
+	char name[height][nameWidth];
+	char value[height][valueWidth];
+	void Add() const;
+	void PrintChart() const;
 };
