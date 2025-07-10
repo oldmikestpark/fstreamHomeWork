@@ -13,7 +13,21 @@ int main()
 		}
 		else if (_getch() == 'p') 
 		{
-			hw.PrintChart();
+			if (hw.n != 0)
+			{
+				hw.PrintChart();
+			}
+		}
+		else if(_getch() == 's')
+		{
+			oldmike::print("\nEnter file name: ");
+
+			char fileName[256];
+			oldmike::read(fileName, 256);
+
+			hw.Save(fileName);
+
+			_putch('\n');
 		}
 	} while (!(_getch() == 'q'));
 
@@ -47,5 +61,22 @@ void HomeWork::PrintChart() const
 			_putch('=');
 		}
 		oldmike::print("\n");
+	}
+}
+
+void HomeWork::Save(char* fileName)
+{
+	std::ofstream out(fileName);
+	out.write("\n     Beautiful Chart Bitches!\n       ------------------------\n\n\n", 66);
+	for (int i = 0; i < hw.n; ++i) 
+	{
+		out.write(hw.name[i], sizeof(hw.name[i]));
+		out.write("   |", 5);
+		int number = oldmike::str2int(hw.value[i]);
+		for (int i = 0; i < number; ++i)
+		{
+			out.put('=');
+		}
+		out.put('\n');
 	}
 }

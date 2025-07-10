@@ -114,4 +114,5 @@ public:
 	char value[height][valueWidth];
 	void Add() const;
 	void PrintChart() const;
+	void Save(char* fileName);
 };
